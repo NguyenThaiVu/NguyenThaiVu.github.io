@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shot map of the year 2017-2018</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #image-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    #selected-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    #image-dropdown {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Shot map visualization of 2017-2018</h1>
+  
+  <div id="image-container">
+    <img id="selected-image" src="2017\Anaheim Ducks.jpg" alt="Selected Image">
+  </div>
+
+  <label for="image-dropdown">Select team:</label>
+  <select id="image-dropdown" onchange="updateImage(this)">
+
+    <option value="2017\Anaheim Ducks.jpg" selected>Anaheim Ducks</option>
+    <option value="2017\Arizona Coyotes.jpg">Arizona Coyotes</option>
+    <option value="2017\Boston Bruins.jpg">Boston Bruins</option>
+    <option value="2017\Buffalo Sabres.jpg">Buffalo Sabres</option>
+    <option value="2017\Calgary Flames.jpg">Calgary Flames</option>
+    <option value="2017\Carolina Hurricanes.jpg">Carolina Hurricanes</option>
+    <option value="2017\Chicago Blackhawks.jpg">Chicago Blackhawks</option>
+    <option value="2017\Colorado Avalanche.jpg">Colorado Avalanche</option>
+    <option value="2017\Columbus Blue Jackets.jpg">Boston Bruins</option>
+    <option value="2017\Dallas Stars.jpg">Dallas Stars</option>
+    <option value="2017\Detroit Red Wings.jpg">Detroit Red Wings</option>
+    <option value="2017\Edmonton Oilers.jpg">Edmonton Oilers</option>
+    <option value="2017\Florida Panthers.jpg">Florida Panthers</option>
+    <option value="2017\Los Angeles Kings.jpg">Los Angeles Kings</option>
+    <option value="2017\Minnesota Wild.jpg">Minnesota Wild</option>
+    <option value="2017\Montréal Canadiens.jpg">Montréal Canadiens</option>
+    <option value="2017\Nashville Predators.jpg">Nashville Predators</option>
+    <option value="2017\New Jersey Devils.jpg">New Jersey Devils</option>
+    <option value="2017\New York Islanders.jpg">New York Islanders</option>
+    <option value="2017\New York Rangers.jpg">New York Rangers</option>
+    <option value="2017\Ottawa Senators.jpg">Ottawa Senators</option>
+    <option value="2017\Philadelphia Flyers.jpg">Philadelphia Flyers</option>
+    <option value="2017\Pittsburgh Penguins.jpg">Pittsburgh Penguins</option>
+    <option value="2017\San Jose Sharks.jpg">San Jose Sharks</option>
+    <option value="2017\St. Louis Blues.jpg">St. Louis Blues</option>
+    <option value="2017\Tampa Bay Lightning.jpg">Tampa Bay Lightning</option>
+    <option value="2017\Toronto Maple Leafs.jpg">Toronto Maple Leafs</option>
+    <option value="2017\Vancouver Canucks.jpg">Vancouver Canucks</option>
+    <option value="2017\Vegas Golden Knights.jpg">Vancouver Canucks</option>
+    <option value="2017\Washington Capitals.jpg">Washington Capitals</option>
+    <option value="2017\Winnipeg Jets.jpg">Winnipeg Jets</option>
+
+  </select>
+  
+
+  <script>
+    function updateImage(select) {
+      var selectedImage = select.value;
+      document.getElementById('selected-image').src = selectedImage;
+    }
+  </script>
+
+</body>
+</html>
