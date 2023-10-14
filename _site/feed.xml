@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-13T14:04:15-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Project_data_science</title><subtitle>Data is the new oil.</subtitle><entry><title type="html">Milestone 1</title><link href="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html" rel="alternate" type="text/html" title="Milestone 1" /><published>2023-10-04T15:25:05-04:00</published><updated>2023-10-04T15:25:05-04:00</updated><id>http://localhost:4000/data/science/project/2023/10/04/milestone-1</id><content type="html" xml:base="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"><![CDATA[<h2 id="question-1">Question 1</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-14T14:48:25-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Project_data_science</title><subtitle>Data is the new oil.</subtitle><entry><title type="html">Milestone 1</title><link href="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html" rel="alternate" type="text/html" title="Milestone 1" /><published>2023-10-04T15:25:05-04:00</published><updated>2023-10-04T15:25:05-04:00</updated><id>http://localhost:4000/data/science/project/2023/10/04/milestone-1</id><content type="html" xml:base="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"><![CDATA[<h2 id="question-1">Question 1</h2>
 
 <p>…content…</p>
 
@@ -7,19 +7,43 @@
 <p>…content…</p>
 
 <hr />
-<h2 id="5-simple-visualizations">5. Simple Visualizations</h2>
+<h2 id="5simple-visualizations">5.Simple Visualizations</h2>
 
 <h3 id="question-1-comparing-shot-types">Question 1: Comparing Shot Types</h3>
-<p>I chose the 2016 season (including both the regular season and playoffs) to produce a figure that compares shot types across all teams. In analyzing the data, it becomes clear that the most dangerous type of shot is the “deflected” shot, with the highest goal percentage of 19.8%. This suggests that deflected shots have a significantly higher chance of resulting in a goal compared to other shot types.
-On the other hand, the most common type of shot is the “wrist shot,” as indicated by the highest bar in the histogram. The reason I chose this figure is that it provides a straightforward visual representation of the shot and goal counts for each shot type, allowing us to easily compare their quantities and ratios. It’s a valuable tool for understanding which shot types are both frequent and effective in scoring goals.</p>
+
+<ul>
+  <li>
+    <p>I chose the 2016 season (including both the regular season and playoffs) to produce a figure that compares shot types across all teams. In analyzing the data, it becomes clear that the most dangerous type of shot is the “deflected” shot, with the highest goal percentage of 19.8%. This suggests that deflected shots have a significantly higher chance of resulting in a goal compared to other shot types.</p>
+  </li>
+  <li>
+    <p>On the other hand, the most common type of shot is the “wrist shot,” as indicated by the highest bar in the histogram. The reason I chose this figure is that it provides a straightforward visual representation of the shot and goal counts for each shot type, allowing us to easily compare their quantities and ratios. It’s a valuable tool for understanding which shot types are both frequent and effective in scoring goals.</p>
+  </li>
+</ul>
+
+<p><img src="/Image/Simple_Visualizations/Q5-1_shot_type_histogram.png" alt="" /></p>
 
 <h3 id="question-2-relationship-between-shot-distance-and-goal-chance">Question 2: Relationship between Shot Distance and Goal Chance</h3>
-<p>In general, in ice hockey matches, the closer the shot distance to the goal, the higher the probability of scoring. This is because, when closer to the goal, the goalkeeper’s defensive range is smaller, giving the shooting player a better chance to put the puck into the net. As seen in my chart, it’s evident that the probability of scoring is significantly higher for shot distances less than 10 feet compared to shot distances greater than 10 feet. This trend remained consistent across the years 2018, 2019, and 2020. I chose to use a lineplot graph because it allows for a direct visualization of how the goal-scoring probability changes with varying shot distances.</p>
+
+<ul>
+  <li>In ice hockey matches, it is generally observed that the closer the shot distance to the goal, the higher the probability of scoring. This is because when a player is closer to the goal, the goalkeeper’s defensive range is reduced, increasing the chances of successfully putting the puck into the net. As evident in the chart, it is clear that the scoring probability is significantly higher for shot distances less than 70 feet when compared to shot distances greater than 70 feet. This trend remained consistent across the years 2018, 2019, and 2020. I opted for a line plot graph as it provides a direct visualization of how the likelihood of scoring changes with varying shot distances.
+<img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2018.png" alt="" />
+<img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2019.png" alt="" />
+<img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2020.png" alt="" /></li>
+</ul>
 
 <h3 id="question-3-goal-percentage-by-shot-distance-and-type">Question 3: Goal Percentage by Shot Distance and Type</h3>
-<p>To create a figure that shows the goal percentage as a function of both distance from the net and the category of shot types for a single season, we can use a heatmap. 
-The x-axis can represent shot distances, the y-axis can represent shot types, and the color intensity can represent the goal percentage.
-In our blog post, we can discuss the findings from the heatmap, identifying the most dangerous types of shots based on goal percentage at different distances from the net.</p>
+
+<ul>
+  <li>
+    <p>In this analysis, I utilized data from the year 2016, including both regular season and playoff games. The figure reveals that there isn’t a single shot type that stands out as the most dangerous across all shot distances. Instead, each shot type has its own optimal goal-scoring range.</p>
+  </li>
+  <li>
+    <p>It’s evident that when the shot distance is less than 10 feet, the “wrap-around” shot type appears to be the most dangerous, as it boasts the highest average goal-scoring probability in that range. In the 10 to 20 feet distance range, “Tip-in” or “Deflected” shots are preferable choices. When the shot distance extends to the 20 to 40 feet range, “Snap Shot” becomes a more effective option. For distances greater than 40 feet but less than 70 feet, “Slap Shot” appears to be a favorable choice. However, when the shot distance exceeds 70 feet, the goal-scoring probability for all shot types decreases significantly.</p>
+  </li>
+</ul>
+
+<h1 id="can-not-find-image">Can not find Image</h1>
+<p><img src="/Image/Simple_Visualizations/Q5-3_" alt="" /></p>
 
 <hr />
 <h2 id="6advanced-visualization">6.Advanced visualization</h2>
