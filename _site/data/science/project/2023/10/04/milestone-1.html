@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Milestone 1" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Question 1" />
-<meta property="og:description" content="Question 1" />
+<meta name="description" content="Table of content:" />
+<meta property="og:description" content="Table of content:" />
 <link rel="canonical" href="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html" />
 <meta property="og:url" content="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html" />
 <meta property="og:site_name" content="Project_data_science" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Milestone 1" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-10-04T15:25:05-04:00","datePublished":"2023-10-04T15:25:05-04:00","description":"Question 1","headline":"Milestone 1","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"},"url":"http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-10-04T15:25:05-04:00","datePublished":"2023-10-04T15:25:05-04:00","description":"Table of content:","headline":"Milestone 1","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"},"url":"http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Project_data_science" /></head>
 <body><header class="site-header" role="banner">
@@ -47,83 +47,250 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h2 id="question-1">Question 1</h2>
+    <h1 id="table-of-content">Table of content:</h1>
 
-<p>…content…</p>
+<p><a href="#1-download-nhl-play-by-play-data-with-python">1. Download NHL Play-by-Play Data with Python</a></p>
 
-<h2 id="question-2">Question 2</h2>
+<p><a href="#2-guide-to-interactive-nhl-game-data-panel">2. Guide to Interactive NHL Game Data Panel</a></p>
 
-<p>…content…</p>
+<p><a href="#3-tidy-data">3. Tidy Data</a></p>
+
+<p><a href="#4simple-visualizations">4. Simple Visualizations</a></p>
+
+<p><a href="#5-advanced-visualization">5. Advanced visualization</a></p>
 
 <hr />
-<h2 id="5simple-visualizations">5.Simple Visualizations</h2>
+<h2 id="1-download-nhl-play-by-play-data-with-python">1. Download NHL Play-by-Play Data with Python</h2>
 
-<h3 id="question-1-comparing-shot-types">Question 1: Comparing Shot Types</h3>
+<p>If you’re looking to download NHL play-by-play data for analysis or other purposes, you’re in the right place :)). This guide will walk you through the <code class="language-plaintext highlighter-rouge">Crawler</code> class, a Python script that can help you scrape and store NHL game data, including play-by-play data.</p>
 
-<ul>
+<h3 id="11-prerequisites">1.1. Prerequisites</h3>
+
+<p>Before you get started, ensure you have the following prerequisites:</p>
+<ol>
+  <li>Python installed on your system.</li>
+  <li>Libraries: <code class="language-plaintext highlighter-rouge">requests</code> and <code class="language-plaintext highlighter-rouge">pathlib</code>. You can install these with pip:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install requests
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="12-getting-started">1.2. Getting Started</h3>
+<p>The Python script, <code class="language-plaintext highlighter-rouge">crawler.py</code>, will help you download NHL play-by-play data. Here’s how you can use it:</p>
+<ol>
+  <li>Download the script from the provided location and save it to your local machine.</li>
+  <li>Open a command prompt or terminal window and navigate to the directory where you saved the script.</li>
+  <li>Run the script using the following command:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python crawler.py
+</code></pre></div>    </div>
+  </li>
+  <li>The script will start collecting NHL play-by-play data for the specified range of seasons. You can adjust the start and end seasons by modifying the <code class="language-plaintext highlighter-rouge">start_season</code> and <code class="language-plaintext highlighter-rouge">end_season</code> values in the script.</li>
+  <li>The collected data will be stored in a directory named <code class="language-plaintext highlighter-rouge">Dataset</code> within the script’s directory.</li>
+</ol>
+
+<h3 id="13-explanation-of-the-python-script">1.3. Explanation of the Python Script</h3>
+
+<p>Let’s break down the key parts of the Python script:</p>
+
+<h4 id="131-importing-necessary-modules">1.3.1. Importing Necessary Modules</h4>
+
+<p>The script starts by importing the required Python modules, including <code class="language-plaintext highlighter-rouge">Path</code> for file manipulation, <code class="language-plaintext highlighter-rouge">requests</code> for web requests, and <code class="language-plaintext highlighter-rouge">json</code> for handling JSON data.</p>
+
+<h4 id="132-class-definition-crawler">1.3.2. Class Definition: <code class="language-plaintext highlighter-rouge">Crawler</code></h4>
+
+<p>The script defines a Python class named <code class="language-plaintext highlighter-rouge">Crawler</code>. This class encapsulates the functionality to fetch and store NHL game data. The script provides various methods within this class to handle data retrieval, storage, and access.</p>
+
+<h4 id="133-data-storage-and-initialization">1.3.3. Data Storage and Initialization</h4>
+
+<p>The class initializes instance variables such as the base URL for the NHL data API, paths for data storage, dictionaries for game types, and data storage containers.</p>
+
+<h4 id="134-generating-game-ids">1.3.4. Generating Game IDs</h4>
+
+<p>The class provides methods to generate game IDs for regular season and playoff games, which are used to fetch game data from the NHL API.</p>
+
+<h4 id="135-data-collection">1.3.5. Data Collection</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">get_url</code> method constructs the full URL for fetching game data, and the <code class="language-plaintext highlighter-rouge">get_game_data</code> method fetches data from the NHL API using the constructed URL. The script checks the response status code to ensure a successful request.</p>
+
+<p>Also, the script defines functions to retrieve data for regular season and playoff games. These functions use the generated game IDs and fetch the corresponding game data.</p>
+
+<p>Finally, the <code class="language-plaintext highlighter-rouge">get_total_data</code> method collects data for a specified range of seasons, storing it in the <code class="language-plaintext highlighter-rouge">self.data</code> dictionary.</p>
+
+<h4 id="136-data-storage">1.3.6. Data Storage</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">write_data</code> method writes the collected game data to JSON files in the <code class="language-plaintext highlighter-rouge">Dataset</code> directory, organizing them by season and game type.</p>
+
+<h4 id="137-dataset-information">1.3.7. Dataset Information</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">write_dataset_info</code> method writes information about the dataset, including the start and end seasons, to a JSON file.</p>
+
+<h4 id="138-data-retrieval">1.3.8. Data Retrieval</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">read_data</code> method reads all the collected data from JSON files and organizes it into a structured dictionary.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">read_data_by_game_id</code> method allows you to retrieve data for a specific game by providing its game ID.</p>
+
+<h3 id="14-example-usage">1.4. Example Usage</h3>
+
+<p>Here’s an example of how to use the script to collect NHL play-by-play data:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python crawler.py
+</code></pre></div></div>
+
+<p>This command will collect NHL play-by-play data for the specified range of seasons and store it in the “Dataset” directory. You can access the collected data and retrieve specific game data using the provided methods within the <code class="language-plaintext highlighter-rouge">Crawler</code> class.</p>
+
+<p>With this script, you can easily download NHL play-by-play data and perform various analyses or build applications based on the obtained data. Enjoy exploring and working with NHL game data!</p>
+
+<hr />
+<h2 id="2-guide-to-interactive-nhl-game-data-panel">2. Guide to Interactive NHL Game Data Panel</h2>
+
+<p>In this guide, we’ll explore how to use an interactive Python script to access and visualize NHL game data. The script includes graphical user interface elements to select, view, and plot game from NHL data.</p>
+
+<!-- 
+### 2.1 Using the Interactive Panel
+
+The interactive panel allows you to explore NHL game data in a user-friendly manner. Let's break down how to use each part of the code:
+
+#### Importing Necessary Libraries and Modules
+
+This block imports essential Python modules, such as IPython widgets for creating the GUI, Matplotlib for data visualization, Pillow for image manipulation, and NumPy for data manipulation. It also imports the `Crawler` class from an external module.
+
+#### Creating an Instance of the 'Crawler' Class
+
+In this block, an instance of the `Crawler` class is created. The `Crawler` class handles the retrieval of NHL game data.
+
+#### Defining the `Panel` Class
+
+The `Panel` class is introduced to manage the graphical user interface for data selection and display. The following functionalities are implemented:
+
+- **Season Selection:** You can select your desired season among all available seasons automatically specified by the `crawler`. The season is also updated based on the entered game ID.
+
+- **Game Type Selection:** You can select your desired game type between regular and playoff games. The game type is also updated based on the entered game ID.
+
+- **Game ID Selection:** The game ID is adjusted based on the selected season and game type. The only thing you may want to change is the game ID (last 4 digits).
+
+- **'Go' Button:** This button fetches and displays selected game data, allowing you to explore the data interactively.
+
+- **'Show' Button:** This button displays the selected data in a user-friendly format.
+
+- **'Reset' Button:** This button resets the control panel to its default values.
+
+- **Data Selection:** It enables you to select data categories and drill down into the information.
+
+
+#### Creating an Instance of the `Panel` Class
+
+In this block, an instance of the `Panel` class is created, which initiates the interactive panel in your Jupyter Notebook environment. 
+
+### Example Usage
+
+Open a Jupyter Notebook environment.
+
+- Copy and paste the provided code blocks into separate cells in your notebook.
+
+- Run each code block sequentially.
+
+- Once you run the last code block, the interactive panel will be displayed in your notebook. -->
+
+<ol>
   <li>
-    <p>I chose the 2016 season (including both the regular season and playoffs) to produce a figure that compares shot types across all teams. In analyzing the data, it becomes clear that the most dangerous type of shot is the “deflected” shot, with the highest goal percentage of 19.8%. This suggests that deflected shots have a significantly higher chance of resulting in a goal compared to other shot types.</p>
+    <p>You can start by selecting the season and game type, and then click the ‘Go’ button to fetch and display NHL game data.</p>
   </li>
   <li>
-    <p>On the other hand, the most common type of shot is the “wrist shot,” as indicated by the highest bar in the histogram. The reason I chose this figure is that it provides a straightforward visual representation of the shot and goal counts for each shot type, allowing us to easily compare their quantities and ratios. It’s a valuable tool for understanding which shot types are both frequent and effective in scoring goals.</p>
+    <p>Use the ‘Show’ button to view the selected data in a readable format. This is an example of debugging tool visualization:
+<img src="/Image/Interactive_debugging/interactive_debugging_tool_visualization.png" alt="" width="100%" /></p>
   </li>
-</ul>
+  <li>
+    <p>You can also reset the panel using the ‘Reset’ button to start fresh.</p>
+  </li>
+  <li>
+    <p>The panel allows you to explore and visualize data for specific NHL games.</p>
+  </li>
+</ol>
+
+<p>The interactive panel is a powerful tool for accessing and visualizing NHL game data with ease. Enjoy exploring and analyzing NHL game data interactively!</p>
+
+<hr />
+<h2 id="3-tidy-data">3. Tidy Data</h2>
+
+<h3 id="31-overview-dataframe">3.1. Overview dataframe</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dataFrame.head(10)
+</code></pre></div></div>
+<p><img src="/Image/Tidy_data/dataFrame_head.png" alt="" width="100%" /> 
+<!-- ![](/Image/Tidy_data/dataframe-1.png){:width="100%"}  -->
+<!-- ![](/Image/Tidy_data/dataframe-2.png){:width="100%"}  --></p>
+
+<h3 id="32-actual-strength-of-players">3.2. Actual strength of players</h3>
+
+<p>One possible way to find the actual strength of the players in each event of a game is to start with 5 on 5 and then adjust the number of players according to the penalties that occur. For example, if a penalty leads to an ejection of a player, the number of players for that team will decrease by one for the duration of the penalty. If an event happens during that time, the actual strength of the players will be the number of players for each team after accounting for the penalties. Similarly, if another penalty occurs while a previous penalty is still in effect, the number of players will decrease accordingly.</p>
+
+<h3 id="33-additional-features">3.3. Additional features</h3>
+
+<p><strong>Attacking side</strong>: We can find the home team from the following sequence of dictionaries: linescore -&gt; teams -&gt; home -&gt; team -&gt; name  We also have the period number for each event. Moreover, we can find all the periods in liveData -&gt; linescore -&gt; periods. Now, to find the attacking side for a specific event, we have to find the related period and check the rink side for the home team and the away team. Since we already know whether the home team or the away team was responsible for the event, we can find the attacking side based on the rink side.</p>
+
+<p><strong>Shot distance</strong>: We can find the distance of a shot based on the coordinates of the shot and the coordinates of the net. The coordinates of the net depend on the attacking side, which we have it already.</p>
+
+<p><strong>Number of players</strong>: To find the actual strength of the players in each event of a game, we have to keep track of the number of players for each team. As we explained in the “Actual strength of players” section, we can start with 5 on 5 and then adjust the number of players according to the penalties that occur. If a penalty leads to an ejection of a player, we decrease the number of players for that team by one for the duration of the penalty. When an event happens, we can compare the time of the event and the time of the last penalty and see if the number of players should be changed accordingly.</p>
+
+<hr />
+<h2 id="4-simple-visualizations">4. Simple Visualizations</h2>
+
+<h3 id="41-comparing-shot-types">4.1. Comparing Shot Types</h3>
+
+<p>I chose the 2016 season (including both the regular season and playoffs) to produce a figure that compares shot types across all teams. In analyzing the data, it becomes clear that the most dangerous type of shot is the <strong>“deflected shot”</strong>, with the highest goal percentage of <strong>19.8%</strong>. This suggests that deflected shots have a significantly higher chance of resulting in a goal compared to other shot types.</p>
+
+<p>On the other hand, the most common type of shot is the <strong>“wrist shot”</strong>, as indicated by the highest bar in the histogram. The reason I chose this figure is that it provides a straightforward visual representation of the shot and goal counts for each shot type, allowing us to easily compare their quantities and ratios. It’s a valuable tool for understanding which shot types are both frequent and effective in scoring goals.</p>
 
 <p><img src="/Image/Simple_Visualizations/Q5-1_shot_type_histogram.png" alt="" /></p>
 
-<h3 id="question-2-relationship-between-shot-distance-and-goal-chance">Question 2: Relationship between Shot Distance and Goal Chance</h3>
+<h3 id="42-relationship-between-shot-distance-and-goal-chance">4.2. Relationship between Shot Distance and Goal Chance</h3>
 
-<ul>
-  <li>In ice hockey matches, it is generally observed that the closer the shot distance to the goal, the higher the probability of scoring. This is because when a player is closer to the goal, the goalkeeper’s defensive range is reduced, increasing the chances of successfully putting the puck into the net. As evident in the chart, it is clear that the scoring probability is significantly higher for shot distances less than 70 feet when compared to shot distances greater than 70 feet. This trend remained consistent across the years 2018, 2019, and 2020. I opted for a line plot graph as it provides a direct visualization of how the likelihood of scoring changes with varying shot distances.
-<img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2018.png" alt="" />
+<p>In ice hockey matches, it is generally observed that the <strong>closer the shot distance to the goal, the higher the probability of scoring</strong>. This is because when a player is closer to the goal, the goalkeeper’s defensive range is reduced, increasing the chances of successfully putting the puck into the net. It is clear that the scoring probability is significantly higher for shot distances less than 70 feet when compared to shot distances greater than 70 feet. This trend remained consistent across the years 2018, 2019, and 2020. I opted for a line plot graph as it provides a direct visualization of how the likelihood of scoring changes with varying shot distances.</p>
+
+<p><img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2018.png" alt="" />
 <img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2019.png" alt="" />
-<img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2020.png" alt="" /></li>
-</ul>
+<img src="/Image/Simple_Visualizations/Q5-2_shot_distance_vs_goal_chance_2020.png" alt="" /></p>
 
-<h3 id="question-3-goal-percentage-by-shot-distance-and-type">Question 3: Goal Percentage by Shot Distance and Type</h3>
+<h3 id="43-goal-percentage-by-shot-distance-and-type">4.3. Goal Percentage by Shot Distance and Type</h3>
 
-<ul>
-  <li>
-    <p>In this analysis, I utilized data from the year 2016, including both regular season and playoff games. The figure reveals that there isn’t a single shot type that stands out as the most dangerous across all shot distances. Instead, each shot type has its own optimal goal-scoring range.</p>
-  </li>
-  <li>
-    <p>It’s evident that when the shot distance is less than 10 feet, the “wrap-around” shot type appears to be the most dangerous, as it boasts the highest average goal-scoring probability in that range. In the 10 to 20 feet distance range, “Tip-in” or “Deflected” shots are preferable choices. When the shot distance extends to the 20 to 40 feet range, “Snap Shot” becomes a more effective option. For distances greater than 40 feet but less than 70 feet, “Slap Shot” appears to be a favorable choice. However, when the shot distance exceeds 70 feet, the goal-scoring probability for all shot types decreases significantly.</p>
-  </li>
-</ul>
+<p>In this analysis, I utilized data from the year 2016, including both regular season and playoff games. The figure reveals that there isn’t a single shot type that stands out as the most dangerous across all shot distances. Instead, each shot type has its own optimal goal-scoring range.</p>
 
-<h1 id="can-not-find-image">Can not find Image</h1>
-<p><img src="/Image/Simple_Visualizations/Q5-3_" alt="" /></p>
+<p>It’s evident that when the shot distance is less than 10 feet, the “wrap-around” shot type appears to be the most dangerous, as it boasts the highest average goal-scoring probability in that range. In the 10 to 20 feet distance range, “Tip-in” or “Deflected” shots are preferable choices. When the shot distance extends to the 20 to 40 feet range, “Snap Shot” becomes a more effective option. For distances greater than 40 feet but less than 70 feet, “Slap Shot” appears to be a favorable choice. However, when the shot distance exceeds 70 feet, the goal-scoring probability for all shot types decreases significantly.</p>
+
+<p><img src="/Image/Simple_Visualizations/Q5-3_distance_and_type_vs_goal_for_2016-2017.png" alt="" /></p>
 
 <hr />
-<h2 id="6advanced-visualization">6.Advanced visualization</h2>
+<h2 id="5-advanced-visualization">5. Advanced visualization</h2>
 
-<h3 id="question-1-export-html-plot">Question 1. Export html plot</h3>
-<ul>
-  <li>The shot map visualization are stored <a href="/Image/Advanced_visualization/shot_map_visualization.html">here</a></li>
-</ul>
+<h3 id="51-export-html-plot">5.1. Export html plot</h3>
 
-<h3 id="question-2-discusss-from-shot-map">Question 2. Discusss from shot map</h3>
-<ul>
-  <li>The main idea here is to measure the frequency of shots from specific positions for each team compared to the league average. This measure helps highlight areas where a team may be particularly strong or weak compared to the average league.</li>
-  <li>For example, if Team A has a higher shot rate in front of the net, it suggests that Team A is likely to take shots at close range compared to the average league.</li>
-</ul>
+<p>The shot map visualization are stored <a href="/Image/Advanced_visualization/shot_map_visualization.html">here</a></p>
 
-<h3 id="question-3-discuss-about-the-team-colorado-avalanche">Question 3. Discuss about the team <em>Colorado Avalanche</em></h3>
-<ul>
-  <li>In season 2016-2017, the Colorado Avalanche had dark blue in front of the net, which means that this team took fewer shots compared to the average league. We can assume that the forwards of this team are bad at the shot. As a result, this team final at the lowest ranking of the league.
-<img src="/Image/Advanced_visualization/2016/Colorado%20Avalanche.jpg" alt="" title="Shot map of Colorado Avalanche in season 2016-2017" width="300px" height="300px" /></li>
-  <li>In season 2020-2021, the Colorado Avalanche have a dark red in the middle of the offensive zone, which mean that this team takes a lot of shot. In other words, the forwards of this team are good at controlling the match and shot. Finally, this team takes the highest position in the standings.
-<img src="/Image/Advanced_visualization/2020/Colorado%20Avalanche.jpg" alt="" title="Shot map of Colorado Avalanche in season 2020-2021" width="300px" height="300px" /></li>
-  <li>The analysis and final results make sense.</li>
-</ul>
+<h3 id="52-discusss-from-shot-map">5.2. Discusss from shot map</h3>
+<p>The main idea here is to measure the frequency of shots from specific positions for each team compared to the league average. This measure helps highlight areas where a team may be particularly strong or weak compared to the average league.</p>
 
-<h3 id="question-4-comparision-between-buffalo-sabres-and-tampa-bay-lightning">Question 4. Comparision between <em>Buffalo Sabres</em> and <em>Tampa Bay Lightning</em></h3>
+<p>For example, if Team A has a higher shot rate in front of the net, it suggests that Team A is likely to take shots at close range compared to the average league.</p>
+
+<h3 id="53-discuss-about-the-team-colorado-avalanche">5.3. Discuss about the team <em>Colorado Avalanche</em></h3>
+<p>In season 2016-2017, the Colorado Avalanche had dark blue in front of the net, which means that this team took fewer shots compared to the average league. We can assume that the forwards of this team are bad at the shot. As a result, this team final at the lowest ranking of the league.</p>
+
+<p><img src="/Image/Advanced_visualization/2016/Colorado%20Avalanche.jpg" alt="" title="Shot map of Colorado Avalanche in season 2016-2017" width="300px" height="300px" /></p>
+
+<p>In season 2020-2021, the Colorado Avalanche have a dark red in the middle of the offensive zone, which mean that this team takes a lot of shot. In other words, the forwards of this team are good at controlling the match and shot. Finally, this team takes the highest position in the standings.</p>
+
+<p><img src="/Image/Advanced_visualization/2020/Colorado%20Avalanche.jpg" alt="" title="Shot map of Colorado Avalanche in season 2020-2021" width="300px" height="300px" /></p>
+
+<p>The analysis and final results make sense.</p>
+
+<h3 id="54-comparision-between-buffalo-sabres-and-tampa-bay-lightning">5.4. Comparision between <em>Buffalo Sabres</em> and <em>Tampa Bay Lightning</em></h3>
+<p>Buffalo Sabres:</p>
 <ul>
-  <li><em>Buffalo Sabres</em>:
-    <ul>
-      <li>From the 2018-2020 seasons, this team had a dark blue area in front of the net. This means that this team can not approach the opponent’s goal and take a shot.</li>
-      <li>Although the Buffalo Sabres have some dark red area in the map (in the year 2018-2019), it is far from the net. It is a long-range shot, which is not really an effective strategy.</li>
-    </ul>
+  <li>
+    <p>From the 2018-2020 seasons, this team had a dark blue area in front of the net. This means that this team can not approach the opponent’s goal and take a shot.</p>
+  </li>
+  <li>
+    <p>Although the Buffalo Sabres have some dark red area in the map (in the year 2018-2019), it is far from the net. It is a long-range shot, which is not really an effective strategy.</p>
   </li>
 </ul>
 
@@ -131,17 +298,17 @@
 <img src="/Image/Advanced_visualization/2019/Buffalo%20Sabres.jpg" alt="" width="300px" height="300px" /> 
 <img src="/Image/Advanced_visualization/2020/Buffalo%20Sabres.jpg" alt="" width="300px" height="300px" /></p>
 
+<p>Tampa Bay Lightning:</p>
+
 <ul>
-  <li><em>Tampa Bay Lightning</em>:
-    <ul>
-      <li>This team had a dark red area in front of the net during 2018-2020. This means that this team control the match and take a lot of shot to the opponent’s net.</li>
-    </ul>
-  </li>
+  <li>This team had a dark red area in front of the net during 2018-2020. This means that this team control the match and take a lot of shot to the opponent’s net.</li>
 </ul>
 
 <p><img src="/Image/Advanced_visualization/2018/Tampa%20Bay%20Lightning.jpg" alt="" width="300px" height="300px" /> 
 <img src="/Image/Advanced_visualization/2019/Tampa%20Bay%20Lightning.jpg" alt="" width="300px" height="300px" /> 
 <img src="/Image/Advanced_visualization/2020/Tampa%20Bay%20Lightning.jpg" alt="" width="300px" height="300px" /></p>
+
+<p>In general, the Tampa Bay Lightning team had a good attacking strategy, which is one of the key points to make this team success during three consecutive seasons.</p>
 
   </div><a class="u-url" href="/data/science/project/2023/10/04/milestone-1.html" hidden></a>
 </article>
