@@ -213,7 +213,7 @@ Open a Jupyter Notebook environment.
 <hr />
 <h2 id="3-tidy-data">3. Tidy Data</h2>
 
-<h3 id="31-overview-dataframe">3.1. Overview dataframe</h3>
+<h3 id="31-dataframe-overview">3.1. Dataframe overview</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dataFrame.head(10)
 </code></pre></div></div>
@@ -230,6 +230,8 @@ Open a Jupyter Notebook environment.
 <p><strong>Shot distance</strong>: We can find the distance of a shot based on the coordinates of the shot and the coordinates of the net. The coordinates of the net depend on the attacking side, which we have it already.</p>
 
 <p><strong>Number of players</strong>: To find the actual strength of the players in each event of a game, we have to keep track of the number of players for each team. As we explained in the “Actual strength of players” section, we can start with 5 on 5 and then adjust the number of players according to the penalties that occur. If a penalty leads to an ejection of a player, we decrease the number of players for that team by one for the duration of the penalty. When an event happens, we can compare the time of the event and the time of the last penalty and see if the number of players should be changed accordingly.</p>
+
+<p><strong>Shot angel</strong>: We can find the angle of the shot by dividing the shot distance by the y-coordinate, which gives us the sine of the shot angle. Then, we can find the angle by taking the inverse sine of the result.</p>
 
 <hr />
 <h2 id="4-simple-visualizations">4. Simple Visualizations</h2>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-15T16:45:26-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Data Science Project</title><subtitle>Data is the new oil.</subtitle><entry><title type="html">Milestone 1</title><link href="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html" rel="alternate" type="text/html" title="Milestone 1" /><published>2023-10-04T15:25:05-04:00</published><updated>2023-10-04T15:25:05-04:00</updated><id>http://localhost:4000/data/science/project/2023/10/04/milestone-1</id><content type="html" xml:base="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"><![CDATA[<h1 id="table-of-content">Table of content:</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-15T18:04:10-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Data Science Project</title><subtitle>Data is the new oil.</subtitle><entry><title type="html">Milestone 1</title><link href="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html" rel="alternate" type="text/html" title="Milestone 1" /><published>2023-10-04T15:25:05-04:00</published><updated>2023-10-04T15:25:05-04:00</updated><id>http://localhost:4000/data/science/project/2023/10/04/milestone-1</id><content type="html" xml:base="http://localhost:4000/data/science/project/2023/10/04/milestone-1.html"><![CDATA[<h1 id="table-of-content">Table of content:</h1>
 
 <p><a href="#1-download-nhl-play-by-play-data-with-python">1. Download NHL Play-by-Play Data with Python</a></p>
 
@@ -164,7 +164,7 @@ Open a Jupyter Notebook environment.
 <hr />
 <h2 id="3-tidy-data">3. Tidy Data</h2>
 
-<h3 id="31-overview-dataframe">3.1. Overview dataframe</h3>
+<h3 id="31-dataframe-overview">3.1. Dataframe overview</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dataFrame.head(10)
 </code></pre></div></div>
@@ -181,6 +181,8 @@ Open a Jupyter Notebook environment.
 <p><strong>Shot distance</strong>: We can find the distance of a shot based on the coordinates of the shot and the coordinates of the net. The coordinates of the net depend on the attacking side, which we have it already.</p>
 
 <p><strong>Number of players</strong>: To find the actual strength of the players in each event of a game, we have to keep track of the number of players for each team. As we explained in the “Actual strength of players” section, we can start with 5 on 5 and then adjust the number of players according to the penalties that occur. If a penalty leads to an ejection of a player, we decrease the number of players for that team by one for the duration of the penalty. When an event happens, we can compare the time of the event and the time of the last penalty and see if the number of players should be changed accordingly.</p>
+
+<p><strong>Shot angel</strong>: We can find the angle of the shot by dividing the shot distance by the y-coordinate, which gives us the sine of the shot angle. Then, we can find the angle by taking the inverse sine of the result.</p>
 
 <hr />
 <h2 id="4-simple-visualizations">4. Simple Visualizations</h2>
