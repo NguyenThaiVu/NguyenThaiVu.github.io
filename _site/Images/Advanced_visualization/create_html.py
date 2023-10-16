@@ -1,21 +1,50 @@
+import os
 import base64
+from pathlib import Path
 
-# List of image file paths
-image_paths = [r"2016/Anaheim Ducks.jpg",\
-               r"2016/Arizona Coyotes.jpg",\
-                r"2016/Boston Bruins.jpg"]
+def image_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        base64_data = base64.b64encode(image_file.read()).decode('utf-8')
+    return base64_data
 
-# Open and read each image, encode it to base64
-image_data = [base64.b64encode(open(image_path, "rb").read()).decode("utf-8") for image_path in image_paths]
+def create_html_with_images(image_folder, path_output_html_file):
+    images_folder = Path(image_folder)
+    images = {image.stem: image_to_base64(image) for image in images_folder.glob("*.jpg")}
 
-# Create the HTML file
-with open("final_output.html", "w") as html_file:
-    # Write the HTML header
-    html_file.write('<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Embedded Images</title>\n</head>\n<body>\n')
+    dropdown_options = "\n".join([f'<option value="{image_name}">{image_name}</option>' for image_name in images])
 
-    # Embed each image in the HTML
-    for image in image_data:
-        html_file.write(f'<img src="data:image/jpeg;base64,{image}" alt="Embedded Image">\n')
+    html_content = f"""
+    <html>
+    <head>
+    </head>
+    <body>
+        <select id="image-dropdown">
+            {dropdown_options}
+        </select>
+        <br>
+        <img id="display-image" src="" alt="Selected Image">
+        <script>
+            var images = {images};  // This should be a dictionary of image names and Base64 data
+            document.getElementById('image-dropdown').addEventListener('change', function() {{
+                var selectedImage = this.value;
+                var imageElement = document.getElementById('display-image');
+                imageElement.src = 'data:image/jpeg;base64,' + images[selectedImage];
+            }});
+        </script>
+    </body>
+    </html>
+    """
 
-    # Write the HTML footer
-    html_file.write('</body>\n</html>')
+    with open(path_output_html_file, "w") as html_file:
+        html_file.write(html_content)
+
+
+def main():
+
+    list_season = ["2016", "2017", "2018", "2019", "2020"]
+
+    for season in list_season:
+        path_output_html_file = os.path.join(f"shot_map_{season}.html")
+        create_html_with_images(season, path_output_html_file)
+
+main()
