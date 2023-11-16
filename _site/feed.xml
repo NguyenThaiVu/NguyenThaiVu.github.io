@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-15T20:06:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Data Science Project</title><subtitle>Data is the new oil.</subtitle><entry><title type="html">Milestone 2</title><link href="http://localhost:4000/data/science/project/2023/11/14/milestone-2.html" rel="alternate" type="text/html" title="Milestone 2" /><published>2023-11-14T14:25:05-05:00</published><updated>2023-11-14T14:25:05-05:00</updated><id>http://localhost:4000/data/science/project/2023/11/14/milestone-2</id><content type="html" xml:base="http://localhost:4000/data/science/project/2023/11/14/milestone-2.html"><![CDATA[<h1 id="table-of-content">Table of content:</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-15T22:06:52-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Data Science Project</title><subtitle>Data is the new oil.</subtitle><entry><title type="html">Milestone 2</title><link href="http://localhost:4000/data/science/project/2023/11/14/milestone-2.html" rel="alternate" type="text/html" title="Milestone 2" /><published>2023-11-14T14:25:05-05:00</published><updated>2023-11-14T14:25:05-05:00</updated><id>http://localhost:4000/data/science/project/2023/11/14/milestone-2</id><content type="html" xml:base="http://localhost:4000/data/science/project/2023/11/14/milestone-2.html"><![CDATA[<h1 id="table-of-content">Table of content:</h1>
 <ul>
   <li><a href="#1-feature-engineering-1">1. Feature Engineering 1</a></li>
   <li><a href="#2-baseline-model">2. Baseline Model</a>
@@ -13,7 +13,13 @@
       <li><a href="#32-add-json-file">3.2. Add Json File</a></li>
     </ul>
   </li>
-  <li><a href="#4-advanced-model">4. Advanced Model</a></li>
+  <li><a href="#4-advanced-model">4. Advanced Model</a>
+    <ul>
+      <li><a href="#41-baseline-xgb">4.1. Baseline Xgb</a></li>
+      <li><a href="#42-xgb-hyperparameter-tuning">4.2. Xgb Hyperparameter Tuning</a></li>
+      <li><a href="#43-xgb-feature-selection">4.3. Xgb Feature Selection</a></li>
+    </ul>
+  </li>
   <li><a href="#5-best-shot-model">5. Best Shot Model</a>
     <ul>
       <li><a href="#51-data-pre-processing">5.1. Data Pre-processing</a>
@@ -39,6 +45,30 @@
 <hr />
 
 <h2 id="1-feature-engineering-1">1. Feature Engineering 1</h2>
+
+<p>This figure below shows how the shot counts vary by distance from the net. As expected, the number of shots and goals decreases as the distance increases, since players tend to shoot closer to the net and scoring from far away is harder. In fact, there are no goals beyond 75 feet. Interestingly, the bin closest to the net does not have the highest number of shots or goals, which may be because it is more difficult to shoot past the goalie at a short range.</p>
+
+<p><img src="/Images/feature_engineering1/distance.png" alt="alt text" /></p>
+
+<p>This figure below shows how the shot counts and goals vary by the angle from the net. We can see that the probability of scoring a goal is higher when the angle is closer to zero, which means that the shooter is facing the net directly. However, the majority of the shots are taken from angles between -0.5 and 0.5 radians, which means that the shooters are slightly off-center. The goals do not follow this trend, and the highest number of goals is achieved at around 0 radian, which means that the shooters are more accurate when they are aligned with the net.</p>
+
+<p><img src="/Images/feature_engineering1/angle.png" alt="alt text" /></p>
+
+<p>This figure below shows how the angle from the net changes with the distance from the net for the shots and goals. We can see that the range of angles decreases as the distance increases, which means that the players shoot with smaller angles when they are farther from the net. This may be because shooting with larger angles from far away is less likely to score or hit the target. Moreover, the figure is symmetric, which means that the sign of the angle does not matter, and the players shoot equally from the left and right sides of the rink. However, the distribution of angles is different for the shots and goals near the net. The shots have a wider range of angles, and some of them are very large, which means that the players shoot from sharp angles close to the net.</p>
+
+<p><img src="/Images/feature_engineering1/angle_distance.png" alt="alt text" /></p>
+
+<p>This figure below shows how the probability of scoring a goal varies by the angle from the net. We can see that the probability is symmetric with respect to the sign of the angle, which means that it does not matter whether the shot is taken from the left or right side of the rink. However, the probability is higher when the angle is closer to zero, which means that shooting near the center of the rink or aligning with the net increases the chance of scoring a goal. The highest probability is achieved at around 0 radian, which corresponds to facing the net directly.</p>
+
+<p><img src="/Images/feature_engineering1/goal_rate_angle.png" alt="alt text" /></p>
+
+<p>This figure below shows how the probability of scoring a goal changes with the distance from the net. We can see that the probability drops sharply at first, and then decreases gradually as the distance increases. This makes sense because it is harder to score from far away. However, the probability is not zero beyond a certain distance, and it fluctuates slightly. This may be because there are some outliers or exceptional shots that score from a long distance.</p>
+
+<p><img src="/Images/feature_engineering1/goal_rate_distance.png" alt="alt text" /></p>
+
+<p>This figure below shows the effect of distance from the net and net emptiness on the probability of scoring a goal. As explained in the document, the probability of scoring a goal with a non-empty net decreases as the distance increases, which is expected because it is harder to shoot past the goalie from far away. However, the probability of scoring a goal with an empty net does not follow the same trend. Although the probability is very low even near the net, because it is rare that the net is empty, there are some cases where the players score from a long distance when the net is empty. This may be because the players take advantage of the situation and try to shoot from their own zone or the neutral zone.</p>
+
+<p><img src="/Images/feature_engineering1/empty_net.png" alt="alt text" /></p>
 
 <hr />
 <h2 id="2-baseline-model">2. Baseline Model</h2>
@@ -159,6 +189,86 @@ You can download the dataset by the link <a href="https://www.comet.com/ift6758-
 
 <hr />
 <h2 id="4-advanced-model">4. Advanced Model</h2>
+<h3 id="41-baseline-xgb">4.1. Baseline Xgb</h3>
+
+<p>To evaluate the model performance more reliably and robustly, I used repeated k-fold cross-validation with k=5 and 10 repetitions. This technique splits the data into five folds and trains and validates the model on different combinations of them. Then, it averages the results over the repetitions to reduce the variance of the estimate <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. The following figures show the results of this section.</p>
+
+<p><a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/bd6de33ca21d428da3dfbad5d8a45538">This is the link to the experiment.</a></p>
+
+<p>Overall, the performance (accuracy and ROC score) between the logistic regression and baseline xgb are the same. The table below compare the accuracy and ROC score between logistic regression and xgb:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Accuracy</th>
+      <th>ROC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Logistic regression (dist+ang)</td>
+      <td>90.7%</td>
+      <td>0.710</td>
+    </tr>
+    <tr>
+      <td>XGB</td>
+      <td>90.7%</td>
+      <td>0.714</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can access the xgboost baseline experiment <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/345cc3e407964868ad89ed84d7427932">here</a></p>
+
+<h3 id="42-xgb-hyperparameter-tuning">4.2. Xgb Hyperparameter Tuning</h3>
+<p>We selected ‘max_depth’, ‘n_estimators’, ‘learning_rate’, and ‘reg_alpha’ as the hyperparameters that have the most influence on the model accuracy. We used the scikit-learn GridSearchCV function to find the best values for these hyperparameters. The best settings for the hyperparameters are:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'objective': ['binary:logistic'],
+'max_depth': [3, 5, 7],
+'learning_rate': [0.1, 0.01],
+'reg_alpha': [0.1, 0.001]
+</code></pre></div></div>
+
+<!-- ```
+'eval_metric': 'logloss', 'learning_rate': 0.1, 'max_depth': 7, 'objective': 'binary:logisitc', and 'reg_alpha': 0.1. 
+``` -->
+
+<p>The following figure show the best results of hyper-parameter tuning.
+<img src="/Images/xgb/hp.png" alt="" /></p>
+
+<p>We put the compared image at the end of section 5. As you can see from the figures, the AUC score increases noticeably by almost 0.06. This means that the model can better distinguish between positive and negative classes. In addition, by looking at the calibration curve, we can say that now the model is better calibrated and performs well enough on the validation set. A well-calibrated model is one that produces probabilities that match the true outcomes. For example, if the model predicts a 70% chance of rain, it should rain 70% of the time.</p>
+
+<p>We have add the experiment for this step, you can access it <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/26fd18671492465ab4796b5272a54255">here</a>.</p>
+
+<p>You can also download the xgboost model with hyperparameter tuning from the model registry by this link <a href="https://www.comet.com/api/registry/model/item/download?modelItemId=LdIkYK3Xjpz4CByoXrJnfAnjd">here</a></p>
+
+<h3 id="43-xgb-feature-selection">4.3. Xgb Feature Selection</h3>
+
+<p>First of all, we created a correlation matrix for the features and set a threshold of 90% in order to remove the redundant features. After applying this, we found that period and game_second were correlated and we deleted one of them randomly. After that, we performed the xgboost plot_importance function and we got the result like the figure (a). As you can see, by setting our threshold to 200, we can keep the important features and delete the rest. After this, we also calculated SHAP values for the data, which are visible in the figure (b). SHAP values measure how much each feature contributes to the model prediction, either positively or negatively. After doing these two methods, we kept the features that both of them had found important, which are the following.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['shot_distance', 'time_last_event', 'angle',
+'y-coordinate', 'Change in shot angle',
+'distance_last_event', 'game_second',
+'Speed', 'coor_y_last_event', 'x-coordinate',
+'power_play_time']
+</code></pre></div></div>
+
+<p>The feature importance of the trained xgb (figure a) and the shap value (figure b):
+<img src="/Images/xgb/combine_feature_importance.png" alt="" /></p>
+
+<!-- ![alt text](/Images/xgb/feature_importance.png)
+![alt text](/Images/xgb/shap_importance.png) -->
+
+<p>As you can see, by choosing the features that we obtained from the feature selection techniques, the ROC curve is lower than before doing this, but this model is more calibrated, which means it has more confidence about its predictions. A lower ROC curve means that the model has a lower accuracy, or the ability to correctly classify positive and negative cases. However, a more calibrated model means that the model’s predicted probabilities are closer to the true probabilities, or the actual outcomes.</p>
+
+<p>We have add the experiment for this step, you can access it <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/e8954f79d8c54d9cad608bae02b631a1">here</a></p>
+
+<p>You can also download the xgboost with feature selection from the model registry <a href="https://www.comet.com/api/registry/model/item/download?modelItemId=4qHFYytx3ddoDtMfDAfWgJD2A">here</a></p>
+
+<p>Four figures (ROC/AUC curve, goal rate vs probability percentile, cumulative proportion of goals vs probability percentile, and the reliability curve) to three differents xgb models: baseline xgb, hyperparameter xgb, and feature selection xgb:</p>
+
+<p><img src="/Images/xgb/xgb_summary.png" alt="" /></p>
 
 <hr />
 <h2 id="5-best-shot-model">5. Best Shot Model</h2>
@@ -379,7 +489,16 @@ You can access each individual experiment with the tag <code class="language-pla
 <p><strong>In conclusion</strong>, we will choose the decision tree as our best model for two reasons. First, the generalization of the decision tree still maintain good performance in both regular and playoffs game (ROC = 0.75). Seconds, the training and inference time of the decision tree is faster than the XGBoost.</p>
 
 <p>The plot curve of ROC/AUC, Goal rate vs probability percentile, Cumulative proportion of goals vs probability percentile, and Reliability curve of the playoff games.
-<img src="/Images/evaluation/playoff_evaluation.png" alt="" /></p>]]></content><author><name></name></author><category term="Data" /><category term="science" /><category term="project" /><summary type="html"><![CDATA[Table of content: 1. Feature Engineering 1 2. Baseline Model 2.1. Unveiling the Accuracy Paradox 2.2. Evaluating Baselines 3. Feature Engineering 2 3.1. Add Features 3.2. Add Json File 4. Advanced Model 5. Best Shot Model 5.1. Data Pre-processing 5.1.1. Add Feature 5.1.2. Feature Selection - Correlation 5.1.3. Feature Selection - Mutual Information 5.1.4. Balance Dataset 5.2. Machine Learning Model Grid Search 5.3. Log the Models to the Experiments on Comet.ml 6. Evaluation 6.1. Evaluate on Regular Season 6.2. Evaluate on Playoff Game]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/10/04/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-10-04T15:25:05-04:00</published><updated>2023-10-04T15:25:05-04:00</updated><id>http://localhost:4000/jekyll/update/2023/10/04/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/10/04/welcome-to-jekyll.html"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<img src="/Images/evaluation/playoff_evaluation.png" alt="" /></p>
+
+<hr />
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>For this section i have used the codes of this <a href="https://towardsdatascience.com/pooled-roc-with-xgboost-and-plotly-553a8169680c#:~:text=To%20get%20a%20ROC%20curve,validation%20and%20got%20500%20results.">website</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><category term="Data" /><category term="science" /><category term="project" /><summary type="html"><![CDATA[Table of content: 1. Feature Engineering 1 2. Baseline Model 2.1. Unveiling the Accuracy Paradox 2.2. Evaluating Baselines 3. Feature Engineering 2 3.1. Add Features 3.2. Add Json File 4. Advanced Model 4.1. Baseline Xgb 4.2. Xgb Hyperparameter Tuning 4.3. Xgb Feature Selection 5. Best Shot Model 5.1. Data Pre-processing 5.1.1. Add Feature 5.1.2. Feature Selection - Correlation 5.1.3. Feature Selection - Mutual Information 5.1.4. Balance Dataset 5.2. Machine Learning Model Grid Search 5.3. Log the Models to the Experiments on Comet.ml 6. Evaluation 6.1. Evaluate on Regular Season 6.2. Evaluate on Playoff Game]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/10/04/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-10-04T15:25:05-04:00</published><updated>2023-10-04T15:25:05-04:00</updated><id>http://localhost:4000/jekyll/update/2023/10/04/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/10/04/welcome-to-jekyll.html"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 
