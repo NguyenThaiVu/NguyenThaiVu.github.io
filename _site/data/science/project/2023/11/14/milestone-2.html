@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Milestone 2" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Table of content:" />
-<meta property="og:description" content="Table of content:" />
+<meta name="description" content="Table of content: 1. Feature Engineering 1 2. Baseline Model 2.1. Unveiling the Accuracy Paradox 2.2. Evaluating Baselines 3. Feature Engineering 2 3.1. Add Features 3.2. Add Json File 4. Advanced Model 5. Best Shot Model 5.1. Data Pre-processing 5.1.1. Add Feature 5.1.2. Feature Selection - Correlation 5.1.3. Feature Selection - Mutual Information 5.1.4. Balance Dataset 5.2. Machine Learning Model Grid Search 5.3. Log the Models to the Experiments on Comet.ml 6. Evaluation 6.1. Evaluate on Regular Season 6.2. Evaluate on Playoff Game" />
+<meta property="og:description" content="Table of content: 1. Feature Engineering 1 2. Baseline Model 2.1. Unveiling the Accuracy Paradox 2.2. Evaluating Baselines 3. Feature Engineering 2 3.1. Add Features 3.2. Add Json File 4. Advanced Model 5. Best Shot Model 5.1. Data Pre-processing 5.1.1. Add Feature 5.1.2. Feature Selection - Correlation 5.1.3. Feature Selection - Mutual Information 5.1.4. Balance Dataset 5.2. Machine Learning Model Grid Search 5.3. Log the Models to the Experiments on Comet.ml 6. Evaluation 6.1. Evaluate on Regular Season 6.2. Evaluate on Playoff Game" />
 <link rel="canonical" href="http://localhost:4000/data/science/project/2023/11/14/milestone-2.html" />
 <meta property="og:url" content="http://localhost:4000/data/science/project/2023/11/14/milestone-2.html" />
 <meta property="og:site_name" content="Data Science Project" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Milestone 2" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-11-14T14:25:05-05:00","datePublished":"2023-11-14T14:25:05-05:00","description":"Table of content:","headline":"Milestone 2","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data/science/project/2023/11/14/milestone-2.html"},"url":"http://localhost:4000/data/science/project/2023/11/14/milestone-2.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-11-14T14:25:05-05:00","datePublished":"2023-11-14T14:25:05-05:00","description":"Table of content: 1. Feature Engineering 1 2. Baseline Model 2.1. Unveiling the Accuracy Paradox 2.2. Evaluating Baselines 3. Feature Engineering 2 3.1. Add Features 3.2. Add Json File 4. Advanced Model 5. Best Shot Model 5.1. Data Pre-processing 5.1.1. Add Feature 5.1.2. Feature Selection - Correlation 5.1.3. Feature Selection - Mutual Information 5.1.4. Balance Dataset 5.2. Machine Learning Model Grid Search 5.3. Log the Models to the Experiments on Comet.ml 6. Evaluation 6.1. Evaluate on Regular Season 6.2. Evaluate on Playoff Game","headline":"Milestone 2","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data/science/project/2023/11/14/milestone-2.html"},"url":"http://localhost:4000/data/science/project/2023/11/14/milestone-2.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Data Science Project" /></head>
 <body><header class="site-header" role="banner">
@@ -48,38 +48,87 @@
 
   <div class="post-content e-content" itemprop="articleBody">
     <h1 id="table-of-content">Table of content:</h1>
+<ul>
+  <li><a href="#1-feature-engineering-1">1. Feature Engineering 1</a></li>
+  <li><a href="#2-baseline-model">2. Baseline Model</a>
+    <ul>
+      <li><a href="#21-unveiling-the-accuracy-paradox">2.1. Unveiling the Accuracy Paradox</a></li>
+      <li><a href="#22-evaluating-baselines">2.2. Evaluating Baselines</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-feature-engineering-2">3. Feature Engineering 2</a>
+    <ul>
+      <li><a href="#31-add-features">3.1. Add Features</a></li>
+      <li><a href="#32-add-json-file">3.2. Add Json File</a></li>
+    </ul>
+  </li>
+  <li><a href="#4-advanced-model">4. Advanced Model</a></li>
+  <li><a href="#5-best-shot-model">5. Best Shot Model</a>
+    <ul>
+      <li><a href="#51-data-pre-processing">5.1. Data Pre-processing</a>
+        <ul>
+          <li><a href="#511-add-feature">5.1.1. Add Feature</a></li>
+          <li><a href="#512-feature-selection---correlation">5.1.2. Feature Selection - Correlation</a></li>
+          <li><a href="#513-feature-selection---mutual-information">5.1.3. Feature Selection - Mutual Information</a></li>
+          <li><a href="#514-balance-dataset">5.1.4. Balance Dataset</a></li>
+        </ul>
+      </li>
+      <li><a href="#52-machine-learning-model-grid-search">5.2. Machine Learning Model Grid Search</a></li>
+      <li><a href="#53-log-the-models-to-the-experiments-on-cometml">5.3. Log the Models to the Experiments on Comet.ml</a></li>
+    </ul>
+  </li>
+  <li><a href="#6-evaluation">6. Evaluation</a>
+    <ul>
+      <li><a href="#61-evaluate-on-regular-season">6.1. Evaluate on Regular Season</a></li>
+      <li><a href="#62-evaluate-on-playoff-game">6.2. Evaluate on Playoff Game</a></li>
+    </ul>
+  </li>
+</ul>
 
 <hr />
 
-<h2 id="1-feature-engineering-1">1. Feature engineering 1</h2>
+<h2 id="1-feature-engineering-1">1. Feature Engineering 1</h2>
 
 <hr />
-<h2 id="2-baseline-model">2. Baseline model</h2>
+<h2 id="2-baseline-model">2. Baseline Model</h2>
 
 <p>In the provided notebook, we implemented baseline models for predicting goal outcomes in hockey games. The notebook begins by importing necessary libraries, setting up directories for data, models, and figures, and initializing Comet experiments for experiment tracking. It then loads the dataset, preprocesses it by selecting desired features, and splits it into training and validation sets. Logistic regression models are trained separately for shot distance, shot angle, and a combination of both features. The notebook includes visualizations such as confusion matrices, ROC curves, goal rate, cumulative percentage of goal, and calibration curves for each model. Random predictions are also generated as a baseline. The notebook concludes with logging relevant metrics and saving the trained models, confusion matrices, and metrics on Comet for further analysis. The models and experiments are tagged appropriately, indicating their baseline nature and the features used in training.</p>
 
 <h3 id="21-unveiling-the-accuracy-paradox">2.1. Unveiling the Accuracy Paradox</h3>
 
-<p><img src="/Images/baseline/hist.png" alt="" /></p>
+<p>The histogram of the labels in the training dataset:
+<img src="/Images/baseline/hist.png" alt="" /></p>
 
-<p>The evaluation results indicate a high accuracy of 91% on the validation set, but upon closer inspection of the precision, recall, and f1-score for label 1 (goal), it becomes apparent that the model is unable to correctly predict instances of this class, yielding zeros in these metrics. The issue arises from the significant class imbalance in the dataset, where label 0 (non-goal) vastly outnumbers label 1. With 276,782 samples for label 0 and only 29,032 samples for label 1, the model might be biased towards predicting the majority class, achieving high accuracy due to the dominance of label 0 in the dataset. However, this high accuracy is misleading, as the model struggles to capture the minority class (label 1).</p>
+<p>The evaluation results indicate a high accuracy of 91% on the validation set, but upon closer inspection of the precision, recall, and f1-score for label 1 (goal), it becomes apparent that the model is unable to correctly predict instances of this class, yielding zeros in these metrics.</p>
+
+<p>The issue arises from the significant class imbalance in the dataset, where label 0 (non-goal) vastly outnumbers label 1. With 276,782 samples for label 0 and only 29,032 samples for label 1, the model might be biased towards predicting the majority class, achieving high accuracy due to the dominance of label 0 in the dataset. However, this high accuracy is misleading, as the model struggles to capture the minority class (label 1).</p>
 
 <h3 id="22-evaluating-baselines">2.2. Evaluating Baselines</h3>
 
 <p><img src="/Images/baseline/baseline-evaluation.png" alt="" /></p>
 
-<p>Baseline Model - Distance: <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/fd6f683bf9324bc4aafe732516e9ed38">here</a></p>
+<p>As we can see, the simplest baseline, random prediction, acts exactly the same as random models, having 50 percent area under the curve in the ROC plot and steady in goal rate and calibration plots.</p>
 
-<p>Baseline Model - Angle: <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/066eb71923294143887d23136514beb5">here</a></p>
+<p>On the other hand, we have noticed slight improvement from the angle model to the distance model and then from there to the model using a combination of them showing that as we increase the number of features, we encounter better performance in evaluation.</p>
 
-<p>Baseline Model - Distance + Angle: <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/90775941400f48689503c7bacdc0ff09">here</a></p>
+<p>We add the experiment to the comet. You can access to those experiment by the following links:</p>
 
-<p>As we can see, the simplest baseline, random prediction, acts exactly the same as random models, having 50 percent area under the curve in the ROC plot and steady in goal rate and calibration plots. On the other hand, we have noticed slight improvement from the angle model to the distance model and then from there to the model using a combination of them showing that as we increase the number of features, we encounter better performance in evaluation.</p>
+<ul>
+  <li>
+    <p>Baseline Model - Distance: <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/fd6f683bf9324bc4aafe732516e9ed38">here</a></p>
+  </li>
+  <li>
+    <p>Baseline Model - Angle: <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/066eb71923294143887d23136514beb5">here</a></p>
+  </li>
+  <li>
+    <p>Baseline Model - Distance + Angle: <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/90775941400f48689503c7bacdc0ff09">here</a></p>
+  </li>
+</ul>
 
 <hr />
-<h2 id="3-feature-engineering-2">3. Feature engineering 2</h2>
+<h2 id="3-feature-engineering-2">3. Feature Engineering 2</h2>
 
-<h3 id="31-add-features">3.1. Add features</h3>
+<h3 id="31-add-features">3.1. Add Features</h3>
 
 <p>We added the features from the list below</p>
 
@@ -146,11 +195,11 @@
 <ul>
   <li>First we split the data into a training set and a test set (the function <code class="language-plaintext highlighter-rouge">split_train_test()</code> was used here), and the subsequent processing of the data will be different depending on the model chosen.</li>
   <li>Then we removed features that were not relevant to the modeling (the function <code class="language-plaintext highlighter-rouge">remove_extra_features()</code> was used) and added a new feature <code class="language-plaintext highlighter-rouge">game_second</code>.</li>
-  <li>Finally we uploaded <code class="language-plaintext highlighter-rouge">train.csv</code>, <code class="language-plaintext highlighter-rouge">test_regular.csv</code>, <code class="language-plaintext highlighter-rouge">test_playoff.csv</code> to comet.ml.
+  <li>Finally we uploaded <code class="language-plaintext highlighter-rouge">train.csv</code>, <code class="language-plaintext highlighter-rouge">test_regular.csv</code>, <code class="language-plaintext highlighter-rouge">test_playoff.csv</code> to comet artifact.
 You can download the dataset by the link <a href="https://www.comet.com/ift6758-b09-project/artifacts/dataset/4.0.2">here</a></li>
 </ul>
 
-<h3 id="32-add-json-file">3.2. Add json file</h3>
+<h3 id="32-add-json-file">3.2. Add Json File</h3>
 
 <ul>
   <li>For this particular match, we wrote a separate py file <code class="language-plaintext highlighter-rouge">get_game.py</code> to run it, and the purpose of this file is to upload this match as a dataframe to comet.ml, named according to requirements(<code class="language-plaintext highlighter-rouge">wpg_v_wsh_2017021065.csv</code>)</li>
@@ -158,32 +207,32 @@ You can download the dataset by the link <a href="https://www.comet.com/ift6758-
 </ul>
 
 <hr />
-<h2 id="4-advanced-model">4. Advanced model</h2>
+<h2 id="4-advanced-model">4. Advanced Model</h2>
 
 <hr />
-<h2 id="5-best-shot-model">5. Best shot model</h2>
+<h2 id="5-best-shot-model">5. Best Shot Model</h2>
 
-<h3 id="51-data-pre-processing">5.1. Data pre-processing</h3>
+<h3 id="51-data-pre-processing">5.1. Data Pre-processing</h3>
 
 <p>In this section, we will provide step-by-step our data pre-processing step, including: add feture, feature selection using correlation, feature selection using mutual information, and balance dataset.</p>
 
-<h4 id="i-add-feature">i. Add feature</h4>
+<h4 id="511-add-feature">5.1.1. Add Feature</h4>
 
 <p>In this section, we will add the new feature called <code class="language-plaintext highlighter-rouge">attacking_zone_shot</code>. This feature indicates whether a shot took place within the opposing team’s attacking zone. We choose to analyze this feature based on the observation that the shot in the attacking zone has high chance to become a goal.</p>
 
 <p>After analyzing, we’ve discerned that 94.5% of shots occurred within the attacking zone, while the remaining 5% happened outside this zone.</p>
 
-<h4 id="ii-feature-selection---correlation">ii. Feature selection - correlation</h4>
+<h4 id="512-feature-selection---correlation">5.1.2. Feature Selection - Correlation</h4>
 
 <p>In this section, we will check the correlation value between pairs of features. If the correlation between two features is larger than the specific <code class="language-plaintext highlighter-rouge">threshold</code>, we will remove it. In this experiment, we set the threshold is 0.9.</p>
 
-<p>After analyzing, we remove features <code class="language-plaintext highlighter-rouge">['period']</code>.</p>
+<p>After analyzing, the correlation between <code class="language-plaintext highlighter-rouge">period</code> and <code class="language-plaintext highlighter-rouge">game_second</code> is 0.94. Therefore, we remove features <code class="language-plaintext highlighter-rouge">['period']</code>.</p>
 
-<h4 id="iii-feature-selection---mutual-information">iii. Feature selection - mutual information</h4>
+<h4 id="513-feature-selection---mutual-information">5.1.3. Feature Selection - Mutual Information</h4>
 
 <p>On this section, we will use mutual information to identify the relationship between features and the target variable. The intuition behind this experiment is that higher mutual information indicates stronger predictive power.</p>
 
-<p>After calculating the mutual information between each feature and target variables. We got the result
+<p>After calculating the mutual information between each feature and target variable. We got the result
 <img src="/Images/best_shot_model/mutual_information.jpg" alt="" /></p>
 
 <p>According to the experiment, we will set the threshold below <strong>0.01</strong>. In other words, If the mutual information between each feature and target variable is smaller than 0.01, we will remove it.</p>
@@ -191,11 +240,11 @@ You can download the dataset by the link <a href="https://www.comet.com/ift6758-
 <p>After analyzing, we choose feature:
 <code class="language-plaintext highlighter-rouge">['x-coordinate', 'y-coordinate', 'shot_distance', 'angle', 'isEmptyNet', 'n_friend', 'n_oppose', 'last_event_type', 'is_rebound', 'attacking_zone_shot']</code></p>
 
-<h4 id="iv-balance-dataset">iv. Balance dataset</h4>
+<h4 id="514-balance-dataset">5.1.4. Balance Dataset</h4>
 
 <p>Because the distribution of label in the training set is imbalanced. We apply the over-sample to add more samples to the minority class.</p>
 
-<h3 id="52-machine-learning-model-grid-search">5.2. Machine learning model grid search</h3>
+<h3 id="52-machine-learning-model-grid-search">5.2. Machine Learning Model Grid Search</h3>
 
 <p>In this section, we run two type of models: decision tree and logistic regression with the preprocessed dataset. For the purpose of this experiment, we just run the simple grid search experiment and leave the complicated work later. The grid hyperparameter tuning on each model:</p>
 <ul>
@@ -207,32 +256,31 @@ You can download the dataset by the link <a href="https://www.comet.com/ift6758-
 }
 </code></pre></div>    </div>
   </li>
-  <li>Grid search logistic regression:</li>
+  <li>Grid search logistic regression:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>param_grid_linear = {
+  "linear_clf__penalty": ['l1', 'l2'],
+  "linear_clf__C": [0.1, 0.01]
+}
+</code></pre></div>    </div>
+    <p>We create four figures (ROC/AUC curve, goal rate vs probability percentile, cumulative proportion of goals vs probability percentile, and the reliability curve) to both ML model: decision tree and logistic regression.</p>
+  </li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>param_grid_linear = {
-    "linear_clf__penalty": ['l1', 'l2'],
-    "linear_clf__C": [0.1, 0.01]
-}
-</code></pre></div></div>
-<p>We create four figures (ROC/AUC curve, goal rate vs probability percentile, cumulative proportion of goals vs probability percentile, and the reliability curve) to both ML model: decision tree and knn</p>
+<p><img src="/Images/best_shot_model/best_shot_model.png" alt="" /></p>
 
-<h4 id="i-the-rocauc-curve">i. The ROC/AUC curve</h4>
+<!-- #### i. The ROC/AUC curve
+![](/Images/best_shot_model/roc.jpg)
 
-<p><img src="/Images/best_shot_model/roc.jpg" alt="" /></p>
+#### ii. The goal rate vs probability percentile
+![](/Images/best_shot_model/goal_rate.jpg)
 
-<h4 id="ii-the-goal-rate-vs-probability-percentile">ii. The goal rate vs probability percentile</h4>
+#### iii. The cumulative proportion of goals vs probability percentile
+![](/Images/best_shot_model/goal_cumulative_proportion.jpg)
 
-<p><img src="/Images/best_shot_model/goal_rate.jpg" alt="" /></p>
+#### iii. The reliability curve
+![](/Images/best_shot_model/calibration.jpg) -->
 
-<h4 id="iii-the-cumulative-proportion-of-goals-vs-probability-percentile">iii. The cumulative proportion of goals vs probability percentile</h4>
-<p><img src="/Images/best_shot_model/goal_cumulative_proportion.jpg" alt="" /></p>
-
-<h4 id="iii-the-reliability-curve">iii. The reliability curve</h4>
-
-<p><img src="/Images/best_shot_model/calibration.jpg" alt="" /></p>
-
-<p>In addition, we also inspect the accuracy and f1 score on the validation set:</p>
+<p>In addition, we also inspect the accuracy, f1 score, and the  ROC score on the validation set:</p>
 
 <table>
   <thead>
@@ -240,6 +288,7 @@ You can download the dataset by the link <a href="https://www.comet.com/ift6758-
       <th> </th>
       <th>Accuracy</th>
       <th>F1 score</th>
+      <th>ROC</th>
     </tr>
   </thead>
   <tbody>
@@ -247,22 +296,24 @@ You can download the dataset by the link <a href="https://www.comet.com/ift6758-
       <td>Decision Tree</td>
       <td>90.7%</td>
       <td>0.738</td>
+      <td>0.74</td>
     </tr>
     <tr>
       <td>Logistic regression</td>
       <td>90.3%</td>
       <td>0.731</td>
+      <td>0.73</td>
     </tr>
   </tbody>
 </table>
 
 <p>In summary, the decision tree is the best model we can build.</p>
 
-<h3 id="53-log-the-models-to-the-experiments-on-cometml">5.3. Log the models to the experiments on comet.ml</h3>
+<h3 id="53-log-the-models-to-the-experiments-on-cometml">5.3. Log the Models to the Experiments on Comet.ml</h3>
 
-<p>We have add the trained decision tree into our Model Registry.</p>
+<p>We have include multiples experiment on the comet. In case you want to check the metrics of each experiment in a tabular format, you can check via this link: <a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/view/new/experiments">here</a></p>
 
-<p>You can download it with those links:</p>
+<p>We have add the trained decision tree into our Model Registry. You can download it with this link:</p>
 <ul>
   <li>Decision tree model: <a href="https://www.comet.com/api/registry/model/item/download?modelItemId=ezJQ3TR5dmuvrVucdWsbKtYaR">here</a></li>
 </ul>
@@ -270,9 +321,114 @@ You can download the dataset by the link <a href="https://www.comet.com/ift6758-
 <p>We also add the evaluation metrics to the Comet experiment. We add 3 metrics, including: Accuracy, ROC, and confusion matrix. 
 You can access each individual experiment with the tag <code class="language-plaintext highlighter-rouge">best_shot_model</code> for more details.</p>
 
-<p>In case you want to check the metrics each experiment in a tabular format, you can check via this link: 
-<a href="https://www.comet.com/ift6758-b09-project/ift6758-project-milestone2/view/new/experiments"></a></p>
+<hr />
+<h2 id="6-evaluation">6. Evaluation</h2>
 
+<p>Overall, our model perform well on both regular and playoff game, which mean that the generalization ability of our model is good.</p>
+
+<h3 id="61-evaluate-on-regular-season">6.1. Evaluate on Regular Season</h3>
+
+<p>On the logistic regression, the features combining distance and angle is better than each feature seperately.</p>
+
+<p>The performance of the decision tree model is better than the baseline logistic regressions. One reason to explain that we apply more features and we balance the dataset.</p>
+
+<p>Finally, the XGBoost model gets the highest ROC scores compared to other methods. One reason to explain for this scenarion is that the XGBoost is quite suitable for this type of tabular data. Moreover, our team perform the good feature selection process (part 5).</p>
+
+<p>Our models perform with the approximately same ROC, goal rate, cumulative proportion, during the validation and testing set.</p>
+
+<p>The ROC score of different models on the regular season compared to the validation set:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Valivation set</th>
+      <th>Test regular season</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Logistic regression (dist)</td>
+      <td>0.69</td>
+      <td>0.69</td>
+    </tr>
+    <tr>
+      <td>Logistic regression (angle)</td>
+      <td>0.57</td>
+      <td>0.56</td>
+    </tr>
+    <tr>
+      <td>Logistic regression (dist+angle)</td>
+      <td>0.71</td>
+      <td>0.71</td>
+    </tr>
+    <tr>
+      <td>XGBoost</td>
+      <td>0.77</td>
+      <td>0.78</td>
+    </tr>
+    <tr>
+      <td>Decision Tree</td>
+      <td>0.74</td>
+      <td>0.75</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The plot curve of ROC/AUC, Goal rate vs probability percentile, Cumulative proportion of goals vs probability percentile, and Reliability curve of the regular games.
+<img src="/Images/evaluation/regular_evaluation.png" alt="" /></p>
+
+<h3 id="62-evaluate-on-playoff-game">6.2. Evaluate on Playoff Game</h3>
+
+<p>The ROC score of different models on the playoff game compared to the validation set:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Valivation set</th>
+      <th>Test playoff games</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Logistic regression (dist)</td>
+      <td>0.69</td>
+      <td>0.68</td>
+    </tr>
+    <tr>
+      <td>Logistic regression (angle)</td>
+      <td>0.57</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <td>Logistic regression (dist+angle)</td>
+      <td>0.71</td>
+      <td>0.70</td>
+    </tr>
+    <tr>
+      <td>XGBoost</td>
+      <td>0.77</td>
+      <td>0.70</td>
+    </tr>
+    <tr>
+      <td>Decision Tree</td>
+      <td>0.74</td>
+      <td>0.75</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>There is slightly difference between ROC on the regular season and playoff games.</p>
+
+<p>The XGBoost has the drop in ROC, compared to ROC in regular season. At that time, the generalization of the trained XGBoost has a little problem and need further exploration in the future.</p>
+
+<p>The performance of the trained decision tree is acceptable, and higher than the baseline logistic regression and even the XGboost model.</p>
+
+<p><strong>In conclusion</strong>, we will choose the decision tree as our best model for two reasons. First, the generalization of the decision tree still maintain good performance in both regular and playoffs game (ROC = 0.75). Seconds, the training and inference time of the decision tree is faster than the XGBoost.</p>
+
+<p>The plot curve of ROC/AUC, Goal rate vs probability percentile, Cumulative proportion of goals vs probability percentile, and Reliability curve of the playoff games.
+<img src="/Images/evaluation/playoff_evaluation.png" alt="" /></p>
 
   </div><a class="u-url" href="/data/science/project/2023/11/14/milestone-2.html" hidden></a>
 </article>
